@@ -16,15 +16,15 @@ execute:
 
 ![](img/RStudio.png){width="20%"}
 
-`RStudio` is the pretty interface and is hosted on a Posit Cloud Server.
+`RStudio` is a pretty interface for interacting with `R`.  We are currently using an online version that is hosted on a Posit Cloud Server.
 
-Think of `R` as the engine of the car and `RStudio` as the car's dashboard.
+For understanding the difference between `R` and `RStudio`, think of `R` as the engine of the car and `RStudio` as the car's dashboard.
 
 ## Local Installation vs Posit Cloud
 
 I have invited you all to a Posit Cloud Workspace.  This is where I will post the materials for the workshop.  You will be able to clone and modify the materials here, which is a good way to engage with `R` when you are starting out.  
 
-Eventually I'd recommend downloading `R` and RStudio to your personal computer.  You can find directions [here](https://posit.co/download/rstudio-desktop/).  If you decide to work locally during the workshop series, make sure to export the files that I post to Posit Cloud. 
+Before the end of the week, I'd recommend downloading `R` and RStudio to your personal computer.  You can find directions [here](https://posit.co/download/rstudio-desktop/).  If you decide to work locally during the workshop series, make sure to export the files that I post to Posit Cloud. 
 
 
 ## Main Components of RStudio Lay-Out
@@ -184,7 +184,7 @@ x + 2
 Run the following `R` chunk to get a sense of the beautiful data work that is in your future:
 
 ```{r}
-# Load libraries
+# Load the necessary packages
 library(detectors)
 library(tidyverse)
 
