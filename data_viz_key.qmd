@@ -124,7 +124,7 @@ Let's now learn to create graphs with the package `ggplot2`.
 
 **Guiding Principle**: We will map variables from the **data** to the **aes**thetic attributes (e.g. location, size, shape, color) of **geom**etric objects (e.g. points, lines, bars).
 
-```
+```         
 {ggplot(data = ---, mapping = aes(---)) +}
   geom_---(---) 
 ```
@@ -275,7 +275,106 @@ ggplot(data = colleges,
 
 ```
 
-# More Graphs Next Time!
+# Moving Beyond the Scatterplot
+
+## `geom_histogram()`
+
+Let's create a histogram of `ADM_RATE`. Let's also
+
+-   Play around with the number of bins.
+-   Make the bars and outline of the bars fun colors!
+
+```{r}
+ggplot(data = colleges, mapping = aes(x = ADM_RATE)) +
+  geom_histogram(bins = 15, color = "cyan4", fill = "cyan3")
+```
+
+## `geom_boxplot()`
+
+Let's create boxplots of `ADM_RATE` by whether or not a school is private or public (`CONTROL`).
+
+```{r}
+ggplot(data = colleges, mapping = aes(y = ADM_RATE,
+                                      x = as.character(CONTROL))) +
+  geom_boxplot()
+
+# Or recode CONTROL
+ggplot(data = colleges, mapping = aes(y = ADM_RATE,
+                                      x = CONTROL_CAT)) +
+  geom_boxplot()
+```
+
+Let's add `HIGHDEG_CAT` to our boxplots by coloring the boxes based on the categories of `HIGHDEG_CAT.`
+
+```{r}
+ggplot(data = colleges, mapping = aes(y = ADM_RATE,
+                                      x = CONTROL_CAT,
+                                      fill = HIGHDEG_CAT)) +
+  geom_boxplot()
+```
+
+## `geom_violin()`
+
+Let's now create violin plots of `ADM_RATE` by whether or not a school is private or public (`CONTROL`).
+
+```{r}
+ggplot(data = colleges, mapping = aes(y = ADM_RATE,
+                                      x = CONTROL_CAT)) +
+  geom_violin()
+
+# Add the data points to the plot (with jitter)
+ggplot(data = colleges, mapping = aes(y = ADM_RATE,
+                                      x = CONTROL_CAT)) +
+  geom_violin() +
+  geom_jitter(width = 0.1, alpha = 0.5)
+```
+
+Compare and contrast the information provided by the boxplot and the violin plot.
+
+## `geom_bar()`
+
+Let's create bar graphs that compare the number of public and private schools by highest degree awarded.
+
+```{r}
+# Graph of counts
+ggplot(data = colleges, mapping = aes(x = CONTROL_CAT,
+                                      fill = HIGHDEG_CAT)) +
+  geom_bar() 
+
+# Graph of dodged counts
+ggplot(data = colleges, mapping = aes(x = CONTROL_CAT,
+                                      fill = HIGHDEG_CAT)) +
+  geom_bar(position = "dodge") 
+
+# Graph of proportions
+ggplot(data = colleges, mapping = aes(x = CONTROL_CAT,
+                                      fill = HIGHDEG_CAT)) +
+  geom_bar(position = "fill")         
+```
+
+# `fill` versus `color`
+
+Here's a graph where we used `scale_color_manual()`:
+
+```{r}
+ggplot(data = colleges,
+       mapping = aes(x = ADM_RATE, 
+                     y = COSTT4_A,
+                     color = Location)) +
+  geom_point(size = 2, alpha = .5) +
+  scale_color_manual(values = c("slateblue", "orange"))
+```
+
+Let's try to change the colors in our bar plot:
+
+```{r}
+ggplot(data = colleges, mapping = aes(x = CONTROL_CAT,
+                                      fill = HIGHDEG_CAT)) +
+  geom_bar() + 
+  scale_fill_manual(values = c("slateblue", "orange"))
+```
+
+Look in your `aes()` and see if you are using `color` or `fill` before deciding the `scale_XXX()`.
 
 # Resources for Learning More about Graphing with `ggplot2`
 

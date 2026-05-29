@@ -193,7 +193,7 @@ ggplot(data = colleges,
   scale_color_manual(values = c("slateblue", "orange"))
 ```
 
-Let's try to change the colors in our bar plot:
+Let's try to change the colors in our plot:
 
 ```{r}
 

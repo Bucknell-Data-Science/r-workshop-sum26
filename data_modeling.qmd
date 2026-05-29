@@ -137,6 +137,16 @@ If you want to allow the slopes to vary, that is called a different slopes model
 
 ```
 
+## Prediction
+
+And now we might want to use the model to predict how likely a given candy is to win!
+
+```{r}
+
+```
+
+
+
 # Logistic Regression
 
 Consider this model when:
@@ -214,7 +224,6 @@ Three metrics:
 * Sensitivity: Among the chocolate candies, proportion of times that the model identified the candy has chocolate
 * Specificity: Among the non-chocolate candies, proportion of times that the model identified the candy doesn't have chocolate
 
-Let's draw a confusion matrix on the board.
 
 ```{r}
 #| eval: false
